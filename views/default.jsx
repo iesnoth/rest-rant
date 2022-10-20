@@ -13,5 +13,5 @@ return (
 )
 }
 
-module.export = Def
+module.exports = Def
 
