@@ -16,3 +16,9 @@ REST-Rant is an app where users can review restaurants.
 | POST | /places/:id/rant | Create a rant (comment) about a certain place |
 | DELETE | /places/:id/rant/:rantId | Delete a rant about a particular place |
 | GET | * | 404 page (matches any route not defined above)
+
+### Fake Data
+Your places should have a name (string), city (string), state (string), cuisines (string) and a pic (string)
+| Name | City | State | Cuisines | Pic |
+|------|------|-------|----------|-----|
+| Pho King | Belview | AK | Vietnamese | PIC |
