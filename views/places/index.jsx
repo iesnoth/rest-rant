@@ -23,6 +23,9 @@ function index(data) {
         <div className='row'>
           {placesFormatted}
         </div>
+        <a href="/places/new">
+          <button className='btn btn-primary'>Add a New Place</button>
+        </a>
       </main>
     </Def>
   )
