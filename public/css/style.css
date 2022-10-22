@@ -1,3 +1,13 @@
+#default,body{
+    height:100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+  }
+
 h1 {
     text-align: center;
     color: cornflowerblue;
@@ -10,4 +20,13 @@ img{
 
 #form{
     padding:3%;
+}
+
+#footer{
+    text-align: center;
+    background-color: cornflowerblue;
+    color: white;
+    padding:15px;
+    /* might not need this */
+    flex-shrink: 0;
 }
