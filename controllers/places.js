@@ -1,12 +1,14 @@
 const router = require('express').Router()
 
-//Make new places
+//CREATE new places
 router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
+//POST
 router.post(`/`,(req,res) =>{
-  res.send('elgkvnwrlg')
+  console.log(req.body)
+  res.send('POST/places')
 })
 
 //GET /places
