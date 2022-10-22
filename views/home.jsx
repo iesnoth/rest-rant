@@ -7,7 +7,7 @@ function home () {
             <main>
                 <h1>HOME</h1>
                 <div>
-                    <img src="/images/curry.jpg" alt="indian curry with naan"/>
+                    <img id="home-image" src="/images/curry.jpg" alt="indian curry with naan"/>
                 <div>
                     Photo by <a href="https://unsplash.com/@mekalluakella">Kalyani Akella</a> on <a href="https://unsplash.com/photos/gml9g1kRQcM">Unsplash</a>
                 </div>
