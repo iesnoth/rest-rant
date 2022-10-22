@@ -35,14 +35,14 @@ function new_form() {
                         <input className="form-control"
                             id="city"
                             name="city"
-                            required />
+                             />
                     </div>
                     <div className="form-group">
                         <label htmlFor="state">Place Name</label>
                         <input className="form-control"
                             id="state"
                             name="state"
-                            required />
+                             />
                     </div>
                     <input className="btn btn-primary" type="submit" value="Add Place" />
                 </form>
