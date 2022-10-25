@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { Router } = require('express')
 const places = require('../models/places.js')
 
 //CREATE new places
@@ -27,6 +28,18 @@ router.get(`/`, (req, res) => {
   res.render(`places/index`, { places })
 })
 
+//EDIT
+router.get(`/:id/edit`,(req,res)=>
+{
+  res.send("edit me!")
+})
+
+//DELETE
+router.delete(`/:id`,(req,res)=>
+{
+  res.send("delete me!")
+})
+
 //SHOW
 router.get(`/:id`, (req, res) => {
   let id = Number(req.params.id)
@@ -37,7 +50,7 @@ router.get(`/:id`, (req, res) => {
     res.render(`error404`)
   }
   else {
-    res.render(`places/show`,{place: places[id]})
+    res.render(`places/show`,{place: places[id],id})
   }
 })
 
