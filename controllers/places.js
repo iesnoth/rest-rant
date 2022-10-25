@@ -29,15 +29,23 @@ router.get(`/`, (req, res) => {
 })
 
 //EDIT
-router.get(`/:id/edit`,(req,res)=>
-{
+router.get(`/:id/edit`, (req, res) => {
   res.send("edit me!")
 })
 
 //DELETE
-router.delete(`/:id`,(req,res)=>
-{
-  res.send("delete me!")
+router.delete(`/:id`, (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render(`error404`)
+  }
+  else if (!places[id]) {
+    res.render(`error404`)
+  }
+  else {
+    places.splice(id, 1)
+    res.redirect(`/places`)
+  }
 })
 
 //SHOW
@@ -46,11 +54,11 @@ router.get(`/:id`, (req, res) => {
   if (isNaN(id)) {
     res.render(`error404`)
   }
-  else if (!places[id]){
+  else if (!places[id]) {
     res.render(`error404`)
   }
   else {
-    res.render(`places/show`,{place: places[id],id})
+    res.render(`places/show`, { place: places[id], id })
   }
 })
 
