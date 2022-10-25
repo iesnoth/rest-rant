@@ -1,5 +1,5 @@
 #default,body{
-    height:100vh;
+    height:100%;
 }
 
 nav{
@@ -30,8 +30,12 @@ nav a:hover{
 body {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    /* justify-content:space-between; */
   }
+
+#children{
+    flex: 1 0 auto;
+}
 
 main{
     height:90%;
