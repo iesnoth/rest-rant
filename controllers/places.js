@@ -28,9 +28,23 @@ router.get(`/`, (req, res) => {
   res.render(`places/index`, { places })
 })
 
+//UPDATE
+router.put(`/:id`,(req,res) =>{
+  res.send('STUB put')
+})
+
 //EDIT
 router.get(`/:id/edit`, (req, res) => {
-  res.send("edit me!")
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render(`error404`)
+  }
+  else if (!places[id]) {
+    res.render(`error404`)
+  }
+  else {
+  res.render(`places/edit`,{place:places[id]})
+  }
 })
 
 //DELETE
