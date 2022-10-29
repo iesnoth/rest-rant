@@ -91,6 +91,10 @@ function new_form() {
                             <option value="WY">Wyoming</option>
                         </select>
                     </div>
+                    <div className="form-group">
+                        <label for="founded">Founded Year</label>
+                        <input className="form-control" id="founded" name="founded" />
+                    </div>
                     <br />
                     <input className="btn btn-primary" type="submit" value="Add Place" />
                 </form>
