@@ -24,10 +24,10 @@ function new_form() {
                             placeholder="http://" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="cuisine">Cuisine</label>
+                        <label htmlFor="cuisines">Cuisine</label>
                         <input className="form-control"
-                            id="cuisine"
-                            name="cuisine"
+                            id="cuisines"
+                            name="cuisines"
                             required />
                     </div>
                     <div className="form-group">

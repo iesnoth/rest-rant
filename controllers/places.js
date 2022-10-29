@@ -4,32 +4,41 @@ const db = require('../models')
 //INDEX
 router.get('/', (req, res) => {
   db.Place.find()
-  .then((places) => {
-    res.render('places/index',{places})
-  })
-  .catch(err => {
-    console.log(err)
-    res.status(404).render('error404')
-  })
+    .then((places) => {
+      res.render('places/index', { places })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(404).render('error404')
+    })
 })
 //POST new info to index
 router.post('/', (req, res) => {
+  console.log(req.body)
   db.Place.create(req.body)
-  .then(()=>{
-    res.redirect('/places')
-  })
-  .catch(err => {
-    console.log(err)
-    res.status(404).render('error404')
-  })
+    .then(() => {
+      res.redirect('/places')
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(404).render('error404')
+    })
 })
-
+//get NEW info
 router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
+//SHOW individual place
 router.get('/:id', (req, res) => {
-  res.send('GET /places/:id stub')
+  db.Place.findById(req.params.id)
+    .then(place => {
+      res.render('places/show', { place })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(404).render('error404')
+    })
 })
 
 router.put('/:id', (req, res) => {
@@ -49,7 +58,7 @@ router.post('/:id/rant', (req, res) => {
 })
 
 router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('GET /places/:id/rant/:rantId stub')
+  res.send('GET /places/:id/rant/:rantId stub')
 })
 
 module.exports = router
