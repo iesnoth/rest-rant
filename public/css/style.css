@@ -64,3 +64,8 @@ img{
     /* might not need this */
     flex-shrink: 0;
 }
+
+/* #alert{
+    background-color: pink;
+    color:maroon
+} */

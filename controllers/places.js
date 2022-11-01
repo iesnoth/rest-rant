@@ -14,14 +14,24 @@ router.get('/', (req, res) => {
 })
 //POST new info to index
 router.post('/', (req, res) => {
-  console.log(req.body)
   db.Place.create(req.body)
     .then(() => {
       res.redirect('/places')
     })
     .catch(err => {
-      console.log(err)
+      if(err && err.name == 'ValidationError'){
+        let message = 'Validation Error:'
+        for (var field in err.errors){
+          message += `${field} was ${err.errors[field].value}. `
+          message += `${err.errors[field].message}`
+        }
+        console.log('Validation error message',message)
+        res.render('places/new',{message})
+      }
+      else{
+        console.log(err)
       res.status(404).render('error404')
+      }
     })
 })
 //get NEW info
