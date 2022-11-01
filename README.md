@@ -26,3 +26,5 @@ Your places should have a name (string), city (string), state (string), cuisines
 ### Notes
 The most important part to remember is the name attribute of the input tag. This is important because it will be the variable name we end up using on the back-end later.
 Less critical, but still important, is to make a for attribute on the label that corresponds to an id attribute on the input. That is for accessibility/screen readers! (part5)
+
+process.exit()
