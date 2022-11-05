@@ -64,13 +64,31 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   res.send('GET edit form stub')
 })
-
-router.post('/:id/rant', (req, res) => {
-  res.send('GET /places/:id/rant stub')
+//post new comment
+router.post('/:id/comment', (req, res) => {
+  console.log(req.body)
+  req.body.rant = req.body.rant ? true : false
+  db.Place.findById(req.params.id)
+  .then(place => {
+    db.Comment.create(req.body)
+    .then(comment =>{
+      place.comments.push(comment.id)
+      place.save()
+      .then(()=>{
+        res.redirect(`/places/${req.params.id}`)
+      })
+    })
+    .catch(err=>{
+      res.status(404).render('error404')
+    })
+  })
+  .catch(err=>{
+    res.status(404).render('error404')
+  })
 })
 
-router.delete('/:id/rant/:rantId', (req, res) => {
-  res.send('GET /places/:id/rant/:rantId stub')
+router.delete('/:id/comment/:commentId', (req, res) => {
+  res.send('GET /places/:id/comment/:commentId stub')
 })
 
 module.exports = router
