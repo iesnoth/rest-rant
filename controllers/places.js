@@ -106,9 +106,16 @@ router.post('/:id/comment', (req, res) => {
       res.status(404).render('error404')
     })
 })
-
+//delete comments NOT WORKING FOR SOME REASON
 router.delete('/:id/comment/:commentId', (req, res) => {
-  res.render('WHEEEEEEE')
+  db.Comment.findByIdAndDelete(req.params.id)
+    .then(place => {
+      res.redirect(`/places/${req.params.id}`)
+    })
+    .catch(err => {
+      console.log('err', err)
+      res.render('error404')
+    })
 })
 
 module.exports = router

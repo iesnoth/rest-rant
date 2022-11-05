@@ -18,6 +18,9 @@ function show(data) {
                         <strong>- {review.author}</strong>
                     </h3>
                     <h4>Rating:{review.stars}</h4>
+                    <form method="POST" action={`/places/${data.place.id}/comment/${review.id}?_method=DELETE`}>
+                                <input type="submit" value="Delete Comment" className="btn btn-danger"/>
+                            </form>
                 </div>
             )
         })
@@ -97,7 +100,7 @@ function show(data) {
                                     />
                                 </div>
                             </div>
-                            <label htmlFor="hasGluten">Rant?</label>
+                            <label htmlFor="rant">Rant?</label>
                             <input
                                 type="checkbox"
                                 name="rant"
