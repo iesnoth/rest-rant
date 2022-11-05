@@ -2,6 +2,7 @@ const React = require(`react`)
 const Def = require(`../default`)
 
 function show(data) {
+    // populate comments with content
     let comments = (
         <h3 className="inactive">
             No comments yet!
@@ -20,6 +21,24 @@ function show(data) {
                 </div>
             )
         })
+    }
+    //populate rating with content
+    let rating = (
+        <h3 className="inactive">
+            Not yet rated
+        </h3>
+    )
+    //get average rating based on number of comments
+    if (data.place.comments.length) {
+        let sumRatings = data.place.comments.reduce((total, review) => {
+            return total + review.stars
+        }, 0)
+        let averageRating = sumRatings / data.place.comments.length
+        rating = (
+            <h3>
+                {Math.round(averageRating)} stars
+            </h3>
+        )
     }
     return (
         <Def>
@@ -41,6 +60,8 @@ function show(data) {
                     </p>
                     <br></br>
                     <div>
+                        <h2>Rating</h2>
+                        {rating}
                         <h2>Comments</h2>
                         {comments}
                     </div>
