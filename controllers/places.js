@@ -19,18 +19,18 @@ router.post('/', (req, res) => {
       res.redirect('/places')
     })
     .catch(err => {
-      if(err && err.name == 'ValidationError'){
+      if (err && err.name == 'ValidationError') {
         let message = 'Validation Error:'
-        for (var field in err.errors){
+        for (var field in err.errors) {
           message += `${field} was ${err.errors[field].value}. `
           message += `${err.errors[field].message}`
         }
-        console.log('Validation error message',message)
-        res.render('places/new',{message})
+        console.log('Validation error message', message)
+        res.render('places/new', { message })
       }
-      else{
+      else {
         console.log(err)
-      res.status(404).render('error404')
+        res.status(404).render('error404')
       }
     })
 })
@@ -42,7 +42,9 @@ router.get('/new', (req, res) => {
 //SHOW individual place
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
+    .populate('comments')
     .then(place => {
+      console.log(place.comments)
       res.render('places/show', { place })
     })
     .catch(err => {
