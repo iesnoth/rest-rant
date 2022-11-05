@@ -33,12 +33,16 @@ function show(data) {
         let sumRatings = data.place.comments.reduce((total, review) => {
             return total + review.stars
         }, 0)
-        let averageRating = sumRatings / data.place.comments.length
-        rating = (
-            <h3>
-                {Math.round(averageRating)} stars
-            </h3>
-        )
+        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        let stars = ''
+        for (let i = 0; i < averageRating; i++){
+            stars += '⭐'
+        }
+            rating = (
+                <h3>
+                    {stars} stars
+                </h3>
+            )
     }
     return (
         <Def>
@@ -103,12 +107,13 @@ function show(data) {
                             <input className="btn btn-primary" type="submit" value="Submit Comment" />
                         </form>
                     </section>
-                    {/* <a href={`/places/${data.id}/edit`} className="btn btn-warning">Edit</a>
-                    <form method="POST" action={`/places/${data.id}/?_method=DELETE`}>
+        {/* why did I need to put place back in? */}
+                    <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">Edit</a>
+                    <form method="POST" action={`/places/${data.place.id}/?_method=DELETE`}>
                         <button type="submit" className="btn btn-danger">
                             Delete
                         </button>
-                    </form> */}
+                    </form>
                 </div>
             </main>
         </Def>
