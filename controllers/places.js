@@ -44,6 +44,7 @@ router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
     .populate('comments')
     .then(place => {
+      //DELETE CONSOLE LOG
       console.log(place.comments)
       res.render('places/show', { place })
     })
@@ -108,7 +109,7 @@ router.post('/:id/comment', (req, res) => {
 })
 //delete comments NOT WORKING FOR SOME REASON
 router.delete('/:id/comment/:commentId', (req, res) => {
-  db.Comment.findByIdAndDelete(req.params.id)
+  db.Comment.findByIdAndDelete(req.params.commentId)
     .then(place => {
       res.redirect(`/places/${req.params.id}`)
     })
