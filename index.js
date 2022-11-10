@@ -27,3 +27,5 @@ app.get(`*`, (req, res) => {
 })
 
 app.listen(process.env.PORT)
+
+module.exports = app;
