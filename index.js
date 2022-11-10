@@ -9,7 +9,7 @@ app.set(`view engine`, `jsx`)
 app.engine(`jsx`, require(`express-react-views`).createEngine())
 app.use(express.static(`public`))
 //body parser
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 //method override
 app.use(methodOverride(`_method`))
 

@@ -64,8 +64,11 @@ router.put('/:id', (req, res) => {
 })
 //delete places
 router.delete('/:id', (req, res) => {
-  db.Place.findByIdAndDelete(req.params.id)
+  db.Place.findByIdAndDelete(req.params.id,req.params.comments)
+  
+  //if place has comments, then find them and delete them from the database
     .then(place => {
+      console.log(req.params.comments)
       res.redirect('/places')
     })
     .catch(err => {
